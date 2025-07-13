@@ -1,6 +1,4 @@
 package com.api.serviceImplementations;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
@@ -8,8 +6,11 @@ import com.api.services.EmailService;
 
 public class EmailServiceImplementation implements EmailService {
 
-    @Autowired
     private JavaMailSender mailSender;
+
+    public EmailServiceImplementation(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     @Override
     public void sendAutoReply(String toEmail, String name, String userMessage) {
