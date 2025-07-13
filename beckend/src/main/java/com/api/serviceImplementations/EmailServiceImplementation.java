@@ -1,9 +1,11 @@
 package com.api.serviceImplementations;
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-
+import org.springframework.stereotype.Service;
 import com.api.services.EmailService;
 
+@Service
 public class EmailServiceImplementation implements EmailService {
 
     private JavaMailSender mailSender;
@@ -30,7 +32,7 @@ public class EmailServiceImplementation implements EmailService {
                 """, name, userMessage);
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("your_email@gmail.com");
+        message.setFrom("jeetkashyap20224@gmail.com");
         message.setTo(toEmail);
         message.setSubject(subject);
         message.setText(body);

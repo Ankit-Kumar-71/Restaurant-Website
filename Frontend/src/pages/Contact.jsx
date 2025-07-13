@@ -8,6 +8,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
 
   const onChangeHandler = (e) => {
@@ -20,28 +21,25 @@ const Contact = () => {
 
   const reset = () => {
     setFormData({
+      name: "",
       email: "",
-      password: "",
+      message: "",
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Simple validation
     if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill all fields");
+      toast.error("Please fill all fields");
       return;
     }
-
-    setLoading(true);
     try {
+      setLoading(true);
       const response = await ApiService.sendMessage(formData);
       toast.success(response);
       reset();
     } catch (error) {
-      alert("Error sending message");
-      console.error(error);
+      toast.error("Failed to send message", error);
     } finally {
       setLoading(false);
     }
@@ -100,7 +98,6 @@ const Contact = () => {
             className="mt-5 bg-[#FEAF00] text-white w-full max-w-md mx-auto py-2 px-2 rounded-md cursor-pointer flex items-center justify-center"
           >
             {loading ? "Sending..." : "Send Message"}
-            Send Message
           </button>
         </form>
       </div>

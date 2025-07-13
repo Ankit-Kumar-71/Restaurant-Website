@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import AddProduct from "./pages/AddProduct";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Profile from "./pages/Profile";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/profile" element={<Profile/>} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/product/:id" element={<SingleDetail />} />
         <Route path="*" element={<h2>Page Not Found</h2>} />

@@ -15,6 +15,8 @@ const Login = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const reset = () => {
     setFormData({
       email: "",
@@ -31,11 +33,22 @@ const Login = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    const token = await ApiService.loginUser(formData);
-    login(token);
-    toast.success("Login successful");
-    reset();
-    navigate("/");
+    if (!formData.email || !formData.password) {
+      toast.error("Please fill all fields");
+      return;
+    }
+    try {
+      setLoading(true);
+      const token = await ApiService.loginUser(formData);
+      login(token);
+      toast.success("Login successful");
+      reset();
+      navigate("/");
+    } catch (error) {
+      toast.error("Login failed", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -80,7 +93,7 @@ const Login = () => {
             type="submit"
             className="mt-5 bg-[#FEAF00] text-white w-full max-w-md mx-auto py-2 px-2 rounded-md cursor-pointer flex items-center justify-center"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
           <p className="text-center text-base font-semibold mt-4 text-gray-900">
             Don't have an account?{" "}

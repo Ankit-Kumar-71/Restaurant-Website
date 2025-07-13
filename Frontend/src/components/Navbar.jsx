@@ -8,7 +8,7 @@ import { StoreContext } from "../context/StoreContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cartCount, auth, logout } = useContext(StoreContext);
+  const { cartCount, auth } = useContext(StoreContext);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -16,10 +16,6 @@ const Navbar = () => {
 
   const onClose = () => {
     setIsMenuOpen(false);
-  };
-
-  const handleLogout = () => {
-    logout();
   };
 
   return (
@@ -71,9 +67,21 @@ const Navbar = () => {
               className="text-3xl cursor-pointer w-8 h-8 rounded-full drop-shadow-md overflow-hidden"
             >
               {auth.user ? (
-                <span className="w-8 h-8 rounded-full bg-white text-gray-800 flex items-center justify-center font-semibold text-sm shadow-md cursor-pointer">
-                  {auth.user.name.charAt(0).toUpperCase()}
-                </span>
+                <Link to="/profile">
+                  <span className="w-8 h-8 rounded-full bg-white text-gray-800 flex items-center justify-center font-semibold text-sm shadow-md cursor-pointer overflow-hidden">
+                    {auth.user.image ? (
+                      <img
+                        src={`http://localhost:8080/api/images/${auth.user.image}`}
+                        alt="Profile"
+                        className="w-full h-full object-cover rounded-full"
+                      />
+                    ) : (
+                      <span className="text-sm font-bold text-gray-700">
+                        {auth.user.name?.charAt(0).toUpperCase() || "U"}
+                      </span>
+                    )}
+                  </span>
+                </Link>
               ) : (
                 <FaRegCircleUser className="text-[#c3cab8] cursor-pointer text-3xl" />
               )}
@@ -82,29 +90,11 @@ const Navbar = () => {
             {/* login popup */}
             {isMenuOpen && (
               <div
-                className="absolute right-0 top-10 bg-white py-2 shadow drop-shadow-md
+                className="absolute right-0 top-10 py-2 
                   flex flex-col min-w-[120px] text-center"
               >
                 <div className="flex flex-col gap-2 text-black">
-                  {auth.user?.role === "ROLE_ADMIN" && (
-                    <Link
-                      onClick={onClose}
-                      className="hover:text-[#FEAF00] duration-300 whitespace-nowrap cursor-pointer px-2 "
-                      to={"/add-product"}
-                    >
-                      Add Product
-                    </Link>
-                  )}
-
-                  {auth.isAuthenticated ? (
-                    <Link
-                      onClick={handleLogout}
-                      to={"login"}
-                      className="hover:text-[#FEAF00] duration-300 whitespace-nowrap cursor-pointer px-2"
-                    >
-                      Logout
-                    </Link>
-                  ) : (
+                  {!auth.isAuthenticated && (
                     <Link
                       onClick={onClose}
                       to={"/login"}

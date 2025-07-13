@@ -52,7 +52,7 @@ class ApiService {
     }
   }
 
-  static async sendMessage(data){
+  static async sendMessage(data) {
     try {
       const response = await axios.post(
         `${this.BASE_URL}/api/contact/send`,
@@ -68,9 +68,9 @@ class ApiService {
   static async getUser(token) {
     try {
       const headers = {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    };
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      };
       const response = await axios.get(`${this.BASE_URL}/api/users/me`, {
         headers,
       });

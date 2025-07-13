@@ -14,6 +14,8 @@ const Signup = () => {
 
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+  
 
   const navigate = useNavigate();
 
@@ -54,19 +56,29 @@ const Signup = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (!image) {
-      alert("Please select a profile image.");
+      toast.error("Please select a profile image.");
       return;
     }
-    const data = new FormData();
-    data.append("role", formData.role);
-    data.append("name", formData.name);
-    data.append("email", formData.email);
-    data.append("password", formData.password);
-    data.append("image", image);
-    const response = await ApiService.registerUser(data);
-    toast.success(response);
-    reset();
-    navigate("/login");
+
+    try {
+      setLoading(true); // ✅ start loading
+
+      const data = new FormData();
+      data.append("role", formData.role);
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("password", formData.password);
+      data.append("image", image);
+
+      const response = await ApiService.registerUser(data);
+      toast.success(response);
+      reset();
+      navigate("/login");
+    } catch (error) {
+      toast.error("Signup failed",error);
+    } finally {
+      setLoading(false); // ✅ stop loading
+    }
   };
 
   return (
@@ -161,7 +173,7 @@ const Signup = () => {
             type="submit"
             className="mt-5 bg-[#FEAF00] text-white w-full max-w-md mx-auto py-2 px-2 rounded-md cursor-pointer flex items-center justify-center"
           >
-            Signup
+            {loading ? "Signing up..." : "Signup"}
           </button>
           <p className="text-center text-base font-semibold mt-4 text-gray-900">
             Already have an account?{" "}
