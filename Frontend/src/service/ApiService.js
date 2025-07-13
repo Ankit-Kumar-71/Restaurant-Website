@@ -52,7 +52,18 @@ class ApiService {
     }
   }
 
-  
+  static async sendMessage(data){
+    try {
+      const response = await axios.post(
+        `${this.BASE_URL}/api/contact/send`,
+        data
+      );
+      return response.data;
+    } catch (error) {
+      toast.error("Error during contact:", error);
+      throw error;
+    }
+  }
 
   static async getUser(token) {
     try {

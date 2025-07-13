@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import ApiService from "../service/ApiService";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +8,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -15,10 +18,33 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const reset = () => {
+    setFormData({
+      email: "",
+      password: "",
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you could integrate with an API, email service, etc.
+
+    // Simple validation
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await ApiService.sendMessage(formData);
+      toast.success(response);
+      reset();
+    } catch (error) {
+      alert("Error sending message");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,6 +99,7 @@ const Contact = () => {
             type="submit"
             className="mt-5 bg-[#FEAF00] text-white w-full max-w-md mx-auto py-2 px-2 rounded-md cursor-pointer flex items-center justify-center"
           >
+            {loading ? "Sending..." : "Send Message"}
             Send Message
           </button>
         </form>
