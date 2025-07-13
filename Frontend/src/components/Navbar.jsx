@@ -98,7 +98,7 @@ const Navbar = () => {
                     <Link
                       onClick={onClose}
                       to={"/login"}
-                      className="hover:text-[#FEAF00] duration-300 whitespace-nowrap cursor-pointer px-2"
+                      className="absolute right-0 top-4 min-w-[120px] bg-white border border-gray-200 shadow-lg rounded-md flex flex-col py-2 text-sm text-gray-700 z-50 "
                     >
                       Login
                     </Link>
