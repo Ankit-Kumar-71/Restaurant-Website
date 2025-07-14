@@ -1,8 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 class ApiService {
-  static BASE_URL = "http://localhost:8080";
 
   static getHeader() {
     const token = localStorage.getItem("token");
@@ -14,7 +14,7 @@ class ApiService {
   static async registerUser(data) {
     try {
       const response = await axios.post(
-        `${this.BASE_URL}/api/auth/signup`,
+        `${BASE_URL}/api/auth/signup`,
         data,
         {
           headers: {
@@ -32,7 +32,7 @@ class ApiService {
   static async loginUser(data) {
     try {
       const response = await axios.post(
-        `${this.BASE_URL}/api/auth/login`,
+        `${BASE_URL}/api/auth/login`,
         data
       );
       return response.data;
@@ -44,7 +44,7 @@ class ApiService {
 
   static async getAllProduct() {
     try {
-      const response = await axios.get(`${this.BASE_URL}/api/products/get`);
+      const response = await axios.get(`${BASE_URL}/api/products/get`);
       return response.data;
     } catch (error) {
       toast.error("Error during getAllProduct:", error);
@@ -55,7 +55,7 @@ class ApiService {
   static async sendMessage(data) {
     try {
       const response = await axios.post(
-        `${this.BASE_URL}/api/contact/send`,
+        `${BASE_URL}/api/contact/send`,
         data
       );
       return response.data;
@@ -71,7 +71,7 @@ class ApiService {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       };
-      const response = await axios.get(`${this.BASE_URL}/api/users/me`, {
+      const response = await axios.get(`${BASE_URL}/api/users/me`, {
         headers,
       });
       return response.data;
@@ -84,7 +84,7 @@ class ApiService {
   static async addProduct(data) {
     try {
       const response = await axios.post(
-        `${this.BASE_URL}/api/products/create`,
+        `${BASE_URL}/api/products/create`,
         data,
         {
           headers: {

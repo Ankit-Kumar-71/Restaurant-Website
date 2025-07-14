@@ -19,7 +19,7 @@ import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 
 const Fruits = () => {
-  const {products} = useContext(StoreContext);
+  const { products } = useContext(StoreContext);
   const iceCreams = products.filter((item) => item.category === "Ice Cream");
 
   return (
@@ -45,15 +45,8 @@ const Fruits = () => {
           }}
         >
           {iceCreams.map((item) => (
-            <SwiperSlide>
-              <SingleItem
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                category={item.category}
-                image={item.image}
-              />
+            <SwiperSlide key={item.id}>
+              <SingleItem product={item} />
             </SwiperSlide>
           ))}
         </Swiper>

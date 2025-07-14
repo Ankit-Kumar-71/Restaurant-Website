@@ -69,7 +69,7 @@ const StoreContextProvider = ({ children }) => {
   const logout = () => {
     setAuth({ user: null, token: null, isAuthenticated: false });
   };
-  
+
   const addToCart = (product) => {
     setCart((prevCart) => {
       const itemExists = prevCart.find((item) => item.id === product.id);

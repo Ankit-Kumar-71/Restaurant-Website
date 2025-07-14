@@ -65,7 +65,7 @@ const AddProduct = () => {
 
   return (
     <div className="bg-[#f8D442] w-full h-full  flex justify-center mx-auto">
-      <div className="mt-20 w-auto mb-5 sm:w-[475px] h-auto bg-white border-none rounded-md shadow-md">
+      <div className="mt-25 w-auto mb-5 sm:w-[475px] h-auto bg-white border-none rounded-md shadow-md">
         <h1 className="text-center text-2xl font-bold mt-6">Add New Product</h1>
         <form
           onSubmit={onSubmitHandler}

@@ -2,16 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-const SingleItem = ({ id, name, price, category, image }) => {
+const SingleItem = ({ product }) => {
   const { addToCart } = useContext(StoreContext);
-  const imageUrl = `http://localhost:8080/api/images/${image}`;
+  if (!product) return null;
+  const { id, name, price, category, image } = product;
   return (
     <div className="max-w-[300px] w-full mx-auto flex flex-col item-center p-4 border border-gray-200 rounded-2xl shadow-xl bg-white">
-      <Link to={`product/${id}`} className="w-full">
+      <Link to={`/product/${id}`} className="w-full">
         <img
-          src={imageUrl}
-          alt={name}
+          src={`${BASE_URL}/api/images/${image}`}
+          alt=""
           className="w-full h-48 object-contain rounded-lg  shadow-md cursor-pointer transition-transform duration-300 hover:scale-105"
         />
       </Link>
@@ -25,7 +27,7 @@ const SingleItem = ({ id, name, price, category, image }) => {
         ${price}
       </p>
       <button
-        onClick={() => addToCart({ id, name, price, category, image })}
+        onClick={() => addToCart(product)}
         className="text-white bg-orange-500 w-full py-2 rounded-lg font-semibold mt-3 cursor-pointer duration-300"
       >
         Add To Cart

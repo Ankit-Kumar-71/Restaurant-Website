@@ -17,52 +17,73 @@ const Checkout = () => {
           Enter Your Details
         </h1>
         <form className="w-full max-w-md mx-auto p-4 bg-white">
+
           <div className="flex flex-col gap-2">
             <label className="text-gray-900" htmlFor="firstName">
-              FirstName
+              First Name
             </label>
             <input
               type="text"
+              id="firstName"
               name="firstName"
               className="w-full py-2 outline-none border border-gray-300 rounded-md"
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <label className="text-gray-900" htmlFor="lastName">
               LastName
             </label>
             <input
               type="text"
+              id="lastName"
               name="lastName"
               className="w-full py-2 outline-none border border-gray-300 rounded-md"
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <label className="text-gray-900" htmlFor="email">
               Email
             </label>
             <input
               type="email"
+              id="email"
               name="email"
               className="w-full py-2 outline-none border border-gray-300 rounded-md"
             />
           </div>
+
           <div className="flex flex-col gap-2">
-            <label className="text-gray-900" htmlFor="password">
+            <label className="text-gray-900" htmlFor="phoneNumber">
+              Phone Number
+            </label>
+            <input
+              type="number"
+              id="phoneNumber"
+              name="phoneNumber"
+              className="w-full py-2 outline-none border border-gray-300 rounded-md"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-gray-900" htmlFor="address">
               Address
             </label>
             <input
               type="text"
+              id="address"
               name="address"
               className="w-full py-2 outline-none border border-gray-300 rounded-md"
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-gray-900" htmlFor="email">
+            <label className="text-gray-900" htmlFor="address">
               Zip code
             </label>
             <input
               type="text"
+              id="address"
               name="address"
               className="w-full py-2 outline-none border border-gray-300 rounded-md"
             />

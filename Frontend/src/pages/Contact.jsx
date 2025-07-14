@@ -47,7 +47,7 @@ const Contact = () => {
 
   return (
     <div className="bg-[#f8D442] w-full h-full flex justify-center mx-auto">
-      <div className="mt-30 w-auto mb-5 sm:w-[475px] h-auto bg-white border-none rounded-md shadow-md">
+      <div className="mt-25 w-auto mb-5 sm:w-[475px] h-auto bg-white border-none rounded-md shadow-md">
         <h2 className="text-center text-2xl font-bold mt-6">Contact Us</h2>
         <form
           onSubmit={handleSubmit}

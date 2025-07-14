@@ -5,6 +5,7 @@ import { BsCart } from "react-icons/bs";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useState, useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,7 +72,7 @@ const Navbar = () => {
                   <span className="w-8 h-8 rounded-full bg-white text-gray-800 flex items-center justify-center font-semibold text-sm shadow-md cursor-pointer overflow-hidden">
                     {auth.user.image ? (
                       <img
-                        src={`http://localhost:8080/api/images/${auth.user.image}`}
+                        src={`${BASE_URL}/api/images/${auth.user.image}`}
                         alt="Profile"
                         className="w-full h-full object-cover rounded-full"
                       />
