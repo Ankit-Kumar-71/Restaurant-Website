@@ -111,14 +111,14 @@ const Contact = () => {
               className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-800 font-medium transition-colors duration-200"
             >
               <Phone className="w-5 h-5" />
-              Call Us
+              Call 
             </a>
             <a
               href="mailto:ankitkumar20224@gmail.com"
               className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-800 font-medium transition-colors duration-200"
             >
               <Mail className="w-5 h-5" />
-              Email Us
+              Email
             </a>
             <a
               href="https://www.linkedin.com/in/ankitkumar07"
