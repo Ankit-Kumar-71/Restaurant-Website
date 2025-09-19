@@ -23,8 +23,8 @@ const Fruits = () => {
   const iceCreams = products.filter((item) => item.category === "Ice Cream");
 
   return (
-    <div className="py-6">
-      <h1 className="text-3xl text-center md:text-start text-gray-900 font-bold md:ml-12">
+    <div>
+      <h1 className="text-5xl md:text-center text-orange-900 font-bold md:ml-12 text-center">
         Grab Your Favourite Ice Cream
       </h1>
       <div className="my-6 px-4">
