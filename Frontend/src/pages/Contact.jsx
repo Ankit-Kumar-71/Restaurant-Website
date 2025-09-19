@@ -134,7 +134,7 @@ const Contact = () => {
               href="https://github.com/Ankit-Kumar-71"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-700 hover:text-black font-medium transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-gray-700 hover:text-blue-800 font-medium transition-colors duration-200"
             >
               <FaGithub className="w-5 h-5" />
               GitHub
