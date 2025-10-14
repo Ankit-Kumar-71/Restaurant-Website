@@ -1,21 +1,6 @@
 import React from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from "swiper/modules";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import {assets} from "../../public/assets";
+import { assets } from "../../public/assets";
 
 const Hero = () => {
   return (
@@ -54,47 +39,11 @@ const Hero = () => {
 
       {/* slider using swiper */}
       <div className="w-[100%] md:w-[50%] md:mr-5 px-4">
-        <Swiper
-          // install Swiper modules
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={50}
-          slidesPerView={1}
-          //navigation 
-          //pagination={{ clickable: true }} 
-          //scrollbar={{ draggable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop={true}
-          className="rounded-lg overflow-hidden"
-        >
-          <SwiperSlide>
-            <img
-              src={assets.hero}
-              alt=""
-              className="w-full h-80 object-cover rounded-lg shadow-lg"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src={assets.c4}
-              alt=""
-              className="w-full h-80 object-cover rounded-lg shadow-lg"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src={assets.f4}
-              alt=""
-              className="w-full h-80 object-cover rounded-lg shadow-lg"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src={assets.v1}
-              alt=""
-              className="w-full h-80 object-cover rounded-lg shadow-lg"
-            />
-          </SwiperSlide>
-        </Swiper>
+        <img
+          src={assets.hero}
+          alt=""
+          className="w-full h-80 object-cover rounded-lg shadow-lg"
+        />
       </div>
     </div>
   );

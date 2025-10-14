@@ -53,8 +53,8 @@ const Login = () => {
 
   return (
     <div className="bg-[#f8D442] w-full h-full flex justify-center mx-auto">
-      <div className="mt-25 w-auto mb-5 sm:w-[475px] h-auto bg-white border-none rounded-md shadow-md">
-        <h1 className="text-center text-2xl font-bold mt-6">
+      <div className="mt-40 w-auto mb-20 sm:w-[475px] h-auto bg-white border-none rounded-md shadow-md">
+        <h1 className="text-center text-2xl font-bold mt-2">
           Login your account
         </h1>
         <p className="text-center text-base font-semibold mt-2 text-gray-900">

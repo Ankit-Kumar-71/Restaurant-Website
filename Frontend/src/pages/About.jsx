@@ -9,7 +9,7 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl py-4">
-            Welcome Food Ordering Website
+            Welcome to Our Restaurant Website
           </h2>
           <p className="mt-4 text-lg text-gray-600">
             A place where tradition meets flavor, and every meal tells a story.
